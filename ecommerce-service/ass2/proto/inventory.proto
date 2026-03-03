@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package inventory;
+
+option go_package = "/inventorypb";
+message Product {
+  string id = 1;
+  string name = 2;
+  double price = 3;
+  int32 stock = 4;
+  string category_id = 5;
+}
+
+message CreateProductRequest {
+  Product product = 1;
+}
+
+message CreateProductResponse {
+  string id = 1;
+}
+
+message GetProductRequest {
+  string id = 1;
+}
+
+message GetProductResponse {
+  Product product = 1;
+}
+
+message ListProductsRequest {
+  string name = 1;
+  string category = 2;
+  int32 limit = 3;
+  int32 offset = 4;
+}
+
+message ListProductsResponse {
+  repeated Product products = 1;
+}
+
+message UpdateProductRequest {
+  Product product = 1;
+}
+
+message UpdateProductResponse {
+  Product product = 1;
+  bool success = 2;
+}
+
+message DeleteProductRequest {
+  string id = 1;
+}
+
+message DeleteProductResponse {
+  bool success = 1;
+}
+message Review {
+ string id = 1;
+ string product_id = 2;
+ string user_id = 3;
+ int32 rating = 4;
+ string comment = 5;
+ string created_at = 6;
+}
+message CreateReviewRequest {
+  string product_id = 1;
+  string user_id = 2;
+  int32 rating = 3;
+  string comment = 4;
+}
+message CreateReviewResponse {
+  Review review = 1;
+}
+message GetProductReviewRequest {
+  string product_id = 1;
+}
+message GetProductReviewResponse {
+  repeated Review reviews = 1;
+}
+service InventoryService {
+  rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse);
+  rpc GetProduct(GetProductRequest) returns (GetProductResponse);
+  rpc ListProducts(ListProductsRequest) returns (ListProductsResponse);
+  rpc UpdateProduct(UpdateProductRequest) returns (UpdateProductResponse);
+  rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse);
+  rpc CreateReview(CreateReviewRequest) returns (CreateReviewResponse);
+  rpc GetProductReview(GetProductReviewRequest) returns (GetProductReviewResponse);
+}
