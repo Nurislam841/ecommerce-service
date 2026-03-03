@@ -44,8 +44,8 @@ Order Service
 ## Project Structure
 
 ```
-ecommerce-service-master/
-└── ass2-master/
+ecommerce-service/
+└── ass2/
     ├── api-gateway/
     │   ├── cmd/
     │   ├── internal/
