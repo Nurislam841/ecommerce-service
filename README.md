@@ -45,7 +45,7 @@ Order Service
 
 ```
 ecommerce-service-master/
-└── AskatNarinbetov_ass2-master/
+└── ass2-master/
     ├── api-gateway/
     │   ├── cmd/
     │   ├── internal/
